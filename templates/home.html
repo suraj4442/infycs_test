@@ -1,0 +1,75 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon</title>
+    <style>
+        /* Default background image for larger screens */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-image: url('{% static "images/desktop-background.jpg" %}');
+            background-size: cover;
+            background-position: center;
+        }
+    
+        /* Media query for smaller screens (e.g., smartphones) */
+        @media only screen and (max-width: 767px) {
+            body {
+                margin: 0;
+                padding: 0;
+                background-image: url('{% static "images/mobile-background.jpg" %}');
+                background-size: cover;
+                background-position: center;
+            }
+        }
+    
+        .content-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: left;
+            color: #fff;
+            padding: 20px;
+        }
+    
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+    
+        input[type="email"] {
+            padding: 10px;
+            width: 200px;
+        }
+    
+        button {
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+    
+
+</head>
+
+<body>
+    <div class="content-container">
+        <h1>We are<br> coming soon</h1>
+        <form action="{% url 'store_email' %}" method="post">
+            {% csrf_token %}
+            <input type="email" name="email" placeholder="Enter your email">
+            <button type="submit">Notify Me</button>
+        </form>
+    </div>
+</body>
+
+</html>
